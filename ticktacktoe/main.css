@@ -1,0 +1,49 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  .field {
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+    grid-row: auto;
+  }
+
+  .tictactoe_button_disabled {
+    background-color: rgb(78, 77, 77);
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 1px 1px 1px 1px;
+  }
+
+  .tictactoe_button_default {
+    background-color: rgb(199, 199, 199);
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 1px 1px 1px 1px;
+  }
+
+  .tictactoe_button_default:hover {
+    background-color: lightgreen;
+  }
+
+  .tictactoe_button_set {
+    background-color: lightyellow;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 1px 1px 1px 1px;
+    pointer-events: none;
+  }
