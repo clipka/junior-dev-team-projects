@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Game of Life</title>
+        <link href="main.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <h1>Game of Life</h1>
+        <p id="error" class="error_text" hidden></p>
+        <label for="x">x:</label>
+        <input type="text" id="x" name="x" value="10"><br><br>
+        <label for="y">y:</label>
+        <input type="text" id="y" name="y" value="10"><br><br>
+        <button class="btn_game" id="btn_generate" onclick="create()">Spielfeld erzeugen</button>
+        <button class="btn_game" id="btn_start" onclick="start()">Spiel Starten</button>
+        <button class="btn_game" id="btn_stop" onclick="stop()">Stop</button>
+        <p id="p_current_generation"></p>
+        <p id="p_result"></p>
+        <div id="universe">
+        </div>
+        <script src="main.js" />
+    </body>
+</html>

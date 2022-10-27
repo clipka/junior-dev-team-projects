@@ -1,0 +1,40 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.error_text {
+  border: 1px solid red;
+  color: red;
+  font-size: 20px;
+}
+
+.button_dead {
+  background-color: rgb(78, 77, 77);
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: bold;
+  border: 1px solid black;
+  margin: 1px 1px 1px 1px;
+  padding: 0px;
+}
+
+.button_dead:hover {
+  background-color:  rgb(116, 116, 116);
+}
+
+.button_alive {
+  background-color: rgb(120, 192, 43);
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: bold;
+  border: 1px solid black;
+  margin: 1px 1px 1px 1px;
+}
+
+.button_alife:hover {
+  background-color:  rgb(200, 229, 169);
+}
