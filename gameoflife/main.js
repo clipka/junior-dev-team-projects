@@ -6,6 +6,7 @@ let generation = 1;
 let universe = [];
 let universe_x_dim = 0;
 let universe_y_dim = 0;
+let universe_type = 'flat';
 
 function toggleAlive(x, y) {
     universe[x][y] = !universe[x][y];
@@ -81,33 +82,34 @@ function neighborhood_flat(x, y) {
     if (lower < universe_y_dim && right < universe_x_dim)
         neighbors.push(universe[right][lower]);
 
-    console.log(neighbors);
     return neighbors;
 }
 
 // donut universe: the universe continues on the other side
 // when reaching the edge
-//
-// neighbors of a given neighbor i:
-// - upper left neighbor: i - (universe_x_dim + 1)
-// - upper neighbor: i - universe_x_dim
-// - upper right neighbor: i - (universe_x_dim - 1)
-// - left neighbor: i-1
-// - right neighbor = i + 1
-// - lower left neighbor = i + (universe_x_dim - 1)
-// - lower neighbor = i + universe_x_dim
-// - lower right neighbor =  i + (universe_x_dim + 1)
-function neighborhood_donut(i) {
+function neighborhood_donut(x, y) {
     let neighbors = [];
 
-    neighbors.push(i - (universe_x_dim + 1));
-    neighbors.push(i - universe_x_dim);
-    neighbors.push(i - (universe_x_dim - 1));
-    neighbors.push(i - 1);
-    neighbors.push(i + 1);
-    neighbors.push(i + (universe_x_dim - 1));
-    neighbors.push(i + universe_x_dim);
-    neighbors.push(i + (universe_x_dim + 1));
+    let upper = y - 1;
+    if (upper < 0) upper = upper + universe_y_dim;
+
+    let lower = y + 1;
+    if (lower >= universe_y_dim) lower = 0;
+
+    let left = x - 1;
+    if (left < 0) left = left + universe_x_dim;
+
+    let right = x + 1;
+    if (right >= universe_x_dim) right = 0;
+
+    neighbors.push(universe[left][upper]);
+    neighbors.push(universe[x][upper]);
+    neighbors.push(universe[right][upper]);
+    neighbors.push(universe[left][y]);
+    neighbors.push(universe[right][y]);
+    neighbors.push(universe[left][lower]);
+    neighbors.push(universe[x][lower]);
+    neighbors.push(universe[right][lower]);
 
     return neighbors;
 }
@@ -115,7 +117,12 @@ function neighborhood_donut(i) {
 // get all neighbors of a given cell
 // we currently assume a flat universe, no donut
 function neighborhood(x, y) {
-    return neighborhood_flat(x, y);
+    if (universe_type == 'flat') {
+        return neighborhood_flat(x, y);
+    }
+    else {
+        return neighborhood_donut(x, y);
+    }
 }
 
 // Regeln:
@@ -243,6 +250,7 @@ function run() {
 function start() {
     gameRunning = true;
     gameStarted = true;
+    universe_type = document.querySelector("input[name='universum']:checked").value;
     run();
 }
 
