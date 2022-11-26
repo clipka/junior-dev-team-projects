@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Errate die Zahl</title>
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+    <div class="container">
+        <form class="form" id="game">
+            <h1 class="header">Errate die Zahl</h1>
+            <p class="info">Versuche die gesuchte Zahl zwischen 0 und 100 in möglichst wenigen Versuchen zu erraten.</p>
+            <label for="number">Welche Zahl wird gesucht?</label>
+            <br>
+            <input type="text" name="number" id="number" autocomplete="off">
+            <br>
+            <small></small>
+            <p>Anzahl der Versuche: <span id="attempts">0</span></p>
+            <br>
+            <input type="submit" id="button" value="guess">
+            <br>
+            <p class="won" id="won" hidden>Gewonnen!</p>
+        </form>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+</html>

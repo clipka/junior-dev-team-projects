@@ -1,0 +1,35 @@
+.container {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    width: fit-content;
+}
+
+h1 {
+    margin: 0px; /* kein Standard Margin */
+}
+
+.button {
+    width: 25%;
+}
+
+.success {
+    border: 2px solid green;
+}
+
+.success_text {
+    color: green;
+}
+
+.error {
+    border: 2px solid red;
+}
+
+.error_text {
+    color: red;
+}
+
+.won {
+    font-size: large;
+    color: teal;
+}
