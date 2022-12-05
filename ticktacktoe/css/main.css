@@ -1,49 +1,30 @@
-body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-  }
+.Feld {
+	color: black;
+  background-color: white;
+  width: 100px;
+  height: 100px;
+  font-size: 40px;
+  font-weight: bold;
+  border: 1px solid black;
+  border-radius: 20px;
+  margin: 3px;
+  vertical-align: top;
+}
 
-  .field {
-    display: grid;
-    grid-template-columns: 100px 100px 100px;
-    grid-row: auto;
-  }
+.Spieleranzeige {
+  font-weight: bold;
+  font-size: 20px;
+}
 
-  .tictactoe_button_disabled {
-    background-color: rgb(78, 77, 77);
-    width: 100px;
-    height: 100px;
-    text-align: center;
-    cursor: pointer;
-    font-weight: bold;
-    border: 1px solid black;
-    border-radius: 5px;
-    margin: 1px 1px 1px 1px;
-  }
+.Ergebnis {
+  color: blue;
+  font-size: 20px;
+  font-weight: bold;
+}
 
-  .tictactoe_button_default {
-    background-color: rgb(199, 199, 199);
-    width: 100px;
-    height: 100px;
-    text-align: center;
-    cursor: pointer;
-    font-weight: bold;
-    border: 1px solid black;
-    border-radius: 5px;
-    margin: 1px 1px 1px 1px;
-  }
-
-  .tictactoe_button_default:hover {
-    background-color: lightgreen;
-  }
-
-  .tictactoe_button_set {
-    background-color: lightyellow;
-    width: 100px;
-    height: 100px;
-    text-align: center;
-    font-weight: bold;
-    border: 1px solid black;
-    border-radius: 5px;
-    margin: 1px 1px 1px 1px;
-    pointer-events: none;
-  }
+.Start {
+  border: 1px solid black;
+  background-color: white;
+  font-size: 20px;
+  padding: 5px;
+}

@@ -5,20 +5,22 @@
         <link href="css/main.css" rel="stylesheet"/>
     </head>
     <body>
-        <h1>TicTacToe</h1>
-        <p id="p_current_player"></p>
-        <button class="btn_game_start" id="btn_start" onclick="start()">Spiel Starten</button>
-        <div class="field" id="field">
-            <button class="tictactoe_button_disabled" id="1" onclick="setzen(event)" disabled></button>
-            <button class="tictactoe_button_disabled" id="2" onclick="setzen(event)" disabled></button>
-            <button class="tictactoe_button_disabled" id="3" onclick="setzen(event)" disabled></button>
-            <button class="tictactoe_button_disabled" id="4" onclick="setzen(event)" disabled></button>
-            <button class="tictactoe_button_disabled" id="5" onclick="setzen(event)" disabled></button>
-            <button class="tictactoe_button_disabled" id="6" onclick="setzen(event)" disabled></button>
-            <button class="tictactoe_button_disabled" id="7" onclick="setzen(event)" disabled></button>
-            <button class="tictactoe_button_disabled" id="8" onclick="setzen(event)" disabled></button>
-            <button class="tictactoe_button_disabled" id="9" onclick="setzen(event)" disabled></button>
-        </div>
+        <button class="start" id="Start" onclick="starten()">Spiel Starten</button>
+
+        <p>Aktueller Spieler: <span id="spieler" class="Spieleranzeige">Spieler 1</span></p>
+        <p class="Ergebnis" id="Ergebnis"></p>
+
+        <button id="1" class="Feld" onclick="setzen(event)"></button>
+        <button id="2" class="Feld" onclick="setzen(event)"></button>
+        <button id="3" class="Feld" onclick="setzen(event)"></button>
+        <br>
+        <button id="4" class="Feld" onclick="setzen(event)"></button>
+        <button id="5" class="Feld" onclick="setzen(event)"></button>
+        <button id="6" class="Feld" onclick="setzen(event)"></button>
+        <br>
+        <button id="7" class="Feld" onclick="setzen(event)"></button>
+        <button id="8" class="Feld" onclick="setzen(event)"></button>
+        <button id="9" class="Feld" onclick="setzen(event)"></button>
         <script src="js/main.js" />
     </body>
 </html>
