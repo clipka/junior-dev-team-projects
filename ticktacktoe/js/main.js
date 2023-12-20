@@ -30,37 +30,21 @@ function hatSpielerGewonnen(symbol) {
 }
 
 function istUnentschieden() {
-    let t1 = document.getElementById("1").innerText;
-    let t2 = document.getElementById("2").innerText;
-    let t3 = document.getElementById("3").innerText;
-    let t4 = document.getElementById("4").innerText;
-    let t5 = document.getElementById("5").innerText;
-    let t6 = document.getElementById("6").innerText;
-    let t7 = document.getElementById("7").innerText;
-    let t8 = document.getElementById("8").innerText;
-    let t9 = document.getElementById("9").innerText;
+  const felder = document.querySelectorAll(".Feld");
 
-      if (t1 != "" && t2 != "" && t3 != "" && t4 != "" && t5 != "" &&
-        t6 != "" && t7 != "" && t8 != "" && t9 != "")
-    {
-      return true;
-    }
-    else
-    {
-      return false;
-    }
+  for (let i = 0; i < felder.length; i++) {
+    if (felder[i].innerText == "") return false;
+  }
+
+  return true;
 }
 
 function deaktiviereSpielfeld() {
-	document.getElementById("1").disabled = true;
-    document.getElementById("2").disabled = true;
-    document.getElementById("3").disabled = true;
-    document.getElementById("4").disabled = true;
-    document.getElementById("5").disabled = true;
-    document.getElementById("6").disabled = true;
-    document.getElementById("7").disabled = true;
-    document.getElementById("8").disabled = true;
-    document.getElementById("9").disabled = true;
+  const felder = document.querySelectorAll(".Feld");
+
+  for (let i = 0; i < felder.length; i++) {
+    felder[i].disabled = true;
+  }
 }
 
 function setzen(e) {
