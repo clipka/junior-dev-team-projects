@@ -5,13 +5,22 @@
     <link href="css/main.css" rel="stylesheet" />
   </head>
   <body>
-    <div id="panel">
+    <div class="panel">
       <h1>Snake</h1>
-      <p id="message" hidden>Du hast verloren</p>
-      <button id="start" onclick="startGame()" hidden>Neues Spiel</button>
+      <button id="start" onclick="startGame()">Neues Spiel</button>
       <p>Punkte: <span id="points">0</span></p>
     </div>
-    <canvas id="game" width="800" height="600"></canvas>
+    <div class="panel" id="difficulty">
+      <p>Schwierigkeitsgrad:</p>
+      <input type="radio" id="easy" name="difficulty" value="easy" onclick="setDifficulty('easy')">
+      <label for="easy">Leicht</label><br>
+      <input type="radio" id="normal" name="difficulty" value="normal" onclick="setDifficulty('normal')" checked>
+      <label for="normal">Normal</label><br>
+      <input type="radio" id="hard" name="difficulty" value="hard" onclick="setDifficulty('hard')">
+      <label for="hard">Schwer</label>
+    </div>
+    <canvas id="game" width="600" height="400" hidden></canvas>
+    <p id="message" hidden>Du hast verloren</p>
     <script src="js/main.js" />
   </body>
 </html>

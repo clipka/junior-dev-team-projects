@@ -3,16 +3,26 @@ const ctx = canvas.getContext("2d");
 
 const pointViewer = document.getElementById("points");
 const messageViewer = document.getElementById("message");
+const difficultyPanel = document.getElementById("difficulty");
+const playerPanel = document.getElementById("playerPanel");
 const startButton = document.getElementById("start");
 
-// refresh of screen is snake speed
-const SNAKE_SPEED = 250;
 const TILE_SIZE = 20;
 const X_TILES = canvas.width / TILE_SIZE;
 const Y_TILES = canvas.height / TILE_SIZE;
 
-let isRunning = true;
+let isRunning = false;
 let points = 0;
+
+
+// refresh of screen is snake speed - determines the difficulty of the game
+const Speed = Object.freeze({
+  easy: 600,
+  normal: 300,
+  fast: 150
+});
+
+let speed = Speed.normal;
 
 const Direction = Object.freeze({
   Up: "Up",
@@ -26,17 +36,27 @@ let direction = Direction.Right;
 let snakeGrow = 0;
 let selfBite = false;
 let snake = [
-  {x: 10, y: 15},
-  {x: 9, y: 15},
-  {x:8, y:15},
-  {x:7, y:15}
+  {x: 10, y: 10},
+  {x: 9, y: 10},
+  {x:8, y:10},
+  {x:7, y:10}
 ];
 
-let gold = { x: Math.floor(Math.random() * X_TILES),
-             y: Math.floor(Math.random() * Y_TILES)};
-
+let gold = { x: 0, y: 0};
 
 // MODEL
+function setGold() {
+  gold.x = Math.floor(Math.random() * X_TILES)
+  gold.y = Math.floor(Math.random() * Y_TILES)
+
+  for (let i = 0; i < snake.length; i++) {
+    if (gold.x === snake[i].x && gold.y === snake[i].y) {
+      setGold(); // retry; cannot set gold in occupied place
+    }
+  }
+}
+
+
 function updateEntities() {
 
   // update snake
@@ -73,8 +93,7 @@ function updateEntities() {
     points += 1;
     snakeGrow = 3;
     // random new gold position
-    gold.x = Math.floor(Math.random() * X_TILES)
-    gold.y = Math.floor(Math.random() * Y_TILES)
+    setGold();
   }
 
   // move the snake
@@ -124,6 +143,10 @@ function drawGame () {
   if (!isRunning) {
     messageViewer.hidden = false;
     startButton.hidden = false;
+    difficultyPanel.hidden = false;
+    for (let i = 0; i < difficultyPanel.children.length; i++) {
+      difficultyPanel.children[i].hidden = false;
+    }
   }
 }
 
@@ -150,34 +173,56 @@ function keyDown(e) {
   }
 };
 
+function  setDifficulty(difficulty) {
+
+  console.log("set speed:", difficulty)
+  if (difficulty === 'easy') {
+    speed = Speed.easy;
+  }
+  else if (difficulty === 'normal') {
+    speed = Speed.normal;
+  }
+  else { // hard
+    speed = Speed.fast;
+  }
+}
+
 // main function
 function gameLoop() {
-  if (isRunning) {
-    clearScreen();
-    updateEntities();
-    drawGame();
-  }
+
+    if (isRunning) {
+      clearScreen();
+      updateEntities();
+      drawGame();
+      setTimeout(() => {
+        gameLoop();
+      }, speed);
+    }
+    console.log("end game loop");
 }
 
 function startGame() {
   const startSnake = [
-    {x: 10, y: 15},
-    {x: 9, y: 15},
-    {x:8, y:15},
-    {x:7, y:15}
+    {x: 10, y: 10},
+    {x: 9, y: 10},
+    {x:8, y:10},
+    {x:7, y:10}
   ];
 
   // reset everything
   direction = Direction.Right;
   snake = [...startSnake];
-  gold = { x: Math.floor(Math.random() * X_TILES),
-           y: Math.floor(Math.random() * Y_TILES)};
+  setGold();
   snakeGrow = 0;
   selfBite = false;
   points = 0;
   isRunning = true;
   messageViewer.hidden = true;
   startButton.hidden = true;
-}
+  for (let i = 0; i < difficultyPanel.children.length; i++) {
+    difficultyPanel.children[i].hidden = true;
+  }
+  canvas.hidden = false;
 
-setInterval(gameLoop, SNAKE_SPEED);
+  gameLoop();
+}
