@@ -5,26 +5,13 @@
     <link href="css/main.css" rel="stylesheet" />
   </head>
   <body>
-    <div class="container">
-      <div class="menu">
-        <button onclick="startGame()">Start</button>
-        <button onclick="stopGame()">Stop</button>
-        <p style="margin-left: 5px; margin-right: 2px;">Punkte:</p>
-        <p id="score">0</p>
-        <div id="direction"></div>
-      </div>
-      <canvas id="game" width=800 height=600 style="border:1px solid green"></canvas>
-      <div class="controller" id="controller">
-        <div class="inner-controller">
-          <button style="width: 100%; display: flex; justify-content: center; width: 50px; height: 50px; align-items: center;" onclick="changeDirection('up')">UP</button>
-          <div style="width: 100%; display: flex; justify-content: space-around;">
-            <button style="width: 50px; height: 50px; display: flex; justify-content: center; align-items: center;" onclick="changeDirection('left')">LEFT</button>
-            <button style="width: 50px; height: 50px;  display: flex; justify-content: center; align-items: center;" onclick="changeDirection('right')">RIGHT</button>
-          </div>
-          <button style="display: flex; justify-content: center; width: 50px; height: 50px; align-items: center;" onclick="changeDirection('down')">DOWN</button>
-        </div>
-      </div>
+    <div id="panel">
+      <h1>Snake</h1>
+      <p id="message" hidden>Du hast verloren</p>
+      <button id="start" onclick="startGame()" hidden>Neues Spiel</button>
+      <p>Punkte: <span id="points">0</span></p>
     </div>
+    <canvas id="game" width="800" height="600"></canvas>
     <script src="js/main.js" />
   </body>
 </html>
